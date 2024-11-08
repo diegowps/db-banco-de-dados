@@ -27,37 +27,63 @@ DQL - Solicitações
 
 \>>>>>>>>>>>>>>>>>>>>>
 
-`create database cadastro default character set utf8 default collate utf8_general_ci;`
+create database cadastro default character set utf8 default collate utf8\_general\_ci;
 
-`use cadastro;`
+use cadastro;
 
-`create table pessoas( id int not null auto_increment, nome varchar (50) not null, Nascimento date, sexo enum ('F', 'M', 'O'), peso decimal(5,2), altura decimal (3,2), nacionalidade varchar (20) default 'Brasil', primary key (id) ) default charset = utf8;`
+create table pessoas( id int not null auto\_increment, nome varchar (50) not null, Nascimento date, sexo enum ('F', 'M', 'O'), peso decimal(5,2), altura decimal (3,2), nacionalidade varchar (20) default 'Brasil', primary key (id) ) default charset = utf8;
 
-`describe pessoas;`
+describe pessoas;
 
-`drop table pessoas;`
+drop table pessoas;
 
-`insert into pessoas(id, nome, nascimento, sexo, peso, altura, nacionalidade) values ('1', 'Amanda', '1997-10-21', 'F', '60', '1.57', 'Brasileira');`
+insert into pessoas(id, nome, nascimento, sexo, peso, altura, nacionalidade) values ('1', 'Amanda', '1997-10-21', 'F', '60', '1.57', 'Brasileira');
 
-`select * from pessoas;`
+select \* from pessoas;
 
-`insert into pessoas(nome, nascimento, sexo, peso, altura, nacionalidade) values ('Bruno', '1997-08-12', 'M', '95', '1.68', 'Brasileiro');`
+insert into pessoas(nome, nascimento, sexo, peso, altura, nacionalidade) values ('Bruno', '1997-08-12', 'M', '95', '1.68', 'Brasileiro');
 
-`insert into pessoas values (default, 'Diego', '1994-12-05', 'M', '90', '1.65', 'Brasileiro');`
+insert into pessoas values (default, 'Diego', '1994-12-05', 'M', '90', '1.65', 'Brasileiro');
 
-`/`_`Inserindo dados na tabela`_`/ insert into pessoas (nome, nascimento, sexo, peso, altura, nacionalidade) values ('diego', '2021-10-27', 'f', '58.5', '1.57', 'brasil'); insert into pessoas values (default, 'Adriano', '1957-08-01', 'M', '84.5', '1.89', default);`
+/_Inserindo dados na tabela_/ insert into pessoas (nome, nascimento, sexo, peso, altura, nacionalidade) values ('diego', '2021-10-27', 'f', '58.5', '1.57', 'brasil'); insert into pessoas values (default, 'Adriano', '1957-08-01', 'M', '84.5', '1.89', default);
 
-`select * from pessoas;`
+select \* from pessoas;
 
-`insert into pessoas (id, nome, nascimento, sexo, peso, altura, nacionalidade) values (default, 'Leandro Ramos', '1979-04-02', 'm', '90.5', '1.87', 'Portugal'), (default, 'Robson Vaamonde', '1979-07-02', 'm', '80,5', '1,77', 'Italia'), (default, 'Jose Assis', '1969-04-15', 'm', '60,5', '1,57', 'Portugal');`
+insert into pessoas (id, nome, nascimento, sexo, peso, altura, nacionalidade) values (default, 'Leandro Ramos', '1979-04-02', 'm', '90.5', '1.87', 'Portugal'), (default, 'Robson Vaamonde', '1979-07-02', 'm', '80,5', '1,77', 'Italia'), (default, 'Jose Assis', '1969-04-15', 'm', '60,5', '1,57', 'Portugal');
 
-`/`_`alterar estrutura da tabela`_`/ alter table pessoas add column profissao varchar(10);`
+/_alterar estrutura da tabela_/ alter table pessoas add column profissao varchar(10);
 
-`desc pessoas; select * from pessoas;`
+desc pessoas; select \* from pessoas;
+
+alter table pessoas drop column profissao;
+
+alter table pessoas add column profissao varchar(10) after nome;
+
+alter table pessoas add column codigo int first;
+
+alter table pessoas modify column profissao varchar(30) not null;
+
+alter table pessoas modify column profissao varchar(30) not null default '';
+
+alter table pessoas change column profissao prof varchar(30);
+
+/_renomear tabela_/ alter table pessoas rename estudantes;
+
+desc estudantes;
+
+create table if not exists cursos( nome varchar(50) NOT NULL UNIQUE, descricao text, carga int UNSIGNED, t\_aulas int, ano year DEFAULT 2024 )default CHARSET = utf8;
+
+create table if not exists estudantes( teste varchar(20) );
+
+desc cursos;
+
+alter table cursos add column idcurso int first;
+
+alter table cursos add primary key(idcursos)
 
 
 
-
+\>>>>>>>>>>>>>>>>>>
 
 
 
